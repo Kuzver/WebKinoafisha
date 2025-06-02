@@ -1,0 +1,143 @@
+{% extends "movies/base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Добро пожаловать!</h1>
+
+  <div class="row gy-4">
+    <!-- Виджет "Популярные фильмы" -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title h5 mb-3">Популярные фильмы</h2>
+          <ul class="list-group list-group-flush">
+            {% for movie in popular_movies %}
+              <li class="list-group-item">{{ movie.title }} — {{ movie.session_count }} сеансов</li>
+            {% empty %}
+              <li class="list-group-item text-muted">Нет популярных фильмов</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Виджет "Ближайшие сеансы" -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title h5 mb-3">Ближайшие сеансы</h2>
+          <ul class="list-group list-group-flush">
+            {% for session in upcoming_sessions %}
+              <li class="list-group-item">
+                {{ session.movie.title }} — {{ session.hall.name }} — {{ session.datetime|date:"d.m.Y H:i" }} — {{ session.price }}₽
+              </li>
+            {% empty %}
+              <li class="list-group-item text-muted">Нет ближайших сеансов</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Виджет "Новинки" -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title h5 mb-3">Новинки</h2>
+          {% for movie in new_releases %}
+            <div class="d-flex align-items-center mb-3">
+              {% if movie.poster %}
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" width="80" class="me-3 rounded">
+              {% else %}
+                <div class="bg-secondary text-white d-flex justify-content-center align-items-center" style="width:80px; height:120px;">
+                  Нет постера
+                </div>
+              {% endif %}
+              <div>
+                <h5 class="mb-1">{{ movie.title }}</h5>
+                <p class="mb-0"><small>Жанр: {{ movie.genre }}</small></p>
+                <p class="mb-0"><small>Рейтинг: {{ movie.rating }}</small></p>
+              </div>
+            </div>
+          {% empty %}
+            <p class="text-muted">Нет новых фильмолорилов</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Поиск -->
+  <form method="get" action="{% url 'movie_search' %}" class="input-group my-4 w-50">
+    <input type="text" name="q" class="form-control" placeholder="Введите название фильма" value="{{ query|default:'' }}">
+    <button type="submit" class="btn btn-primary">Найти</button>
+  </form>
+
+  <div class="card mt-4">
+  <div class="card-body">
+    <h2 class="card-title h5 mb-3">Результаты поиска для: "{{ query }}"</h2>
+    {% for movie in results %}
+      <div class="mb-4 border-bottom pb-3">
+        <h5>{{ movie.title }} ({{ movie.release_year }})</h5>
+        <p><strong>Жанр:</strong> {{ movie.genre }}</p>
+        <p><strong>Режиссёр:</strong> {{ movie.director }}</p>
+        <p><strong>Актёры:</strong> {{ movie.actors }}</p>
+        <p><strong>Возрастное ограничение:</strong> {{ movie.age_limit }}</p>
+        <p><strong>Описание:</strong> {{ movie.description }}</p>
+        <p><strong>Рейтинг:</strong> {{ movie.display_rating }}</p>
+      </div>
+    {% empty %}
+      <p class="text-muted">Ничего не найдено.</p>
+    {% endfor %}
+  </div>
+</div>
+
+  <!-- Скоро в кино -->
+  <div class="card mt-4">
+    <div class="card-body">
+      <h2 class="card-title h5 mb-3">Скоро в кино</h2>
+      {% for movie in upcoming_movies %}
+        <div class="mb-3">
+          <h5>{{ movie.title }}</h5>
+          <p>Премьера: {{ movie.release_date }}</p>
+        </div>
+      {% empty %}
+        <p class="text-muted">Нет премьер</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card mt-4 p-3">
+    <h2 class="h5 mb-3">Скоро в кино — Топ премьер</h2>
+    <ol class="list-group list-group-numbered mb-3">
+      {% for movie in top_movies %}
+        <li class="list-group-item d-flex align-items-center justify-content-between flex-wrap">
+          <a href="{% url 'movie_detail' movie.id %}" class="flex-grow-1 me-3 text-decoration-none">{{ movie.title }}</a>
+          <div class="d-flex align-items-center gap-3">
+            {% if movie.poster %}
+              <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" width="50" class="rounded">
+            {% else %}
+              <img src="/static/img/no-poster.png" alt="Нет постера" width="50" class="rounded">
+            {% endif %}
+            <div class="text-muted small">
+              <div>{{ movie.original_title }}</div>
+              <div>{{ movie.release_date|date:"d M Y" }}</div>
+            </div>
+            {% if user.is_authenticated %}
+              {% if movie.id in user_favorites %}
+                <button disabled class="btn btn-secondary btn-sm">В избранном</button>
+              {% else %}
+                <form method="post" action="{% url 'index' %}" class="mb-0">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-primary btn-sm">Сохранить в избранное</button>
+                </form>
+              {% endif %}
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+    <a href="#" class="btn btn-link">Перейти к календарю премьер</a>
+  </div>
+
+{% endblock %}

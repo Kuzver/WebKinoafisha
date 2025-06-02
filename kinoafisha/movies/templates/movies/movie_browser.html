@@ -1,0 +1,49 @@
+{% extends "movies/base.html" %}
+{% load static %}
+{% block content %}
+<h1 class="mb-4">Список всех фильмов</h1>
+
+<div class="d-flex flex-wrap gap-4">
+  {% for movie in movies %}
+    <div class="card" style="width: 20rem;">
+      {% if movie.poster %}
+        <img src="{{ movie.poster.url }}" class="card-img-top" alt="{{ movie.title }}">
+      {% else %}
+        <div class="d-flex align-items-center justify-content-center bg-light" style="height: 270px;">
+          <span class="text-muted">Нет постера</span>
+        </div>
+      {% endif %}
+
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text"><strong>Жанр:</strong> {{ movie.genre }}</p>
+        <p class="card-text"><strong>Год выпуска:</strong> {{ movie.release_year }}</p>
+        <p class="card-text"><strong>Длительность:</strong> {{ movie.duration }} мин.</p>
+        <p class="card-text"><strong>Режиссёр:</strong> {{ movie.director }}</p>
+        <p class="card-text"><strong>Актёры:</strong> {{ movie.actors }}</p>
+        <p class="card-text"><strong>Возрастное ограничение:</strong> {{ movie.age_limit }}</p>
+        <p class="card-text"><strong>Описание:</strong> {{ movie.description }}</p>
+        <p class="card-text"><strong>Рейтинг:</strong> {{ movie.display_rating }}</p>
+
+        <form method="post" action="{% url 'hide_movie' movie.id %}" class="mb-2">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-warning w-100">Скрыть</button>
+        </form>
+
+        <form method="post" action="{% url 'report_movie' movie.id %}">
+          {% csrf_token %}
+          <div class="mb-2">
+            <textarea name="reason" placeholder="Причина жалобы" required class="form-control" rows="2"></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger w-100">Пожаловаться</button>
+        </form>
+      </div>
+    </div>
+  {% empty %}
+    <p>Фильмы не найдены.</p>
+  {% endfor %}
+</div>
+<div class="mb-4">
+  <a href="{% url 'hidden_movies' %}" class="btn btn-secondary">Показать скрытые фильмы</a>
+</div>
+{% endblock %}
