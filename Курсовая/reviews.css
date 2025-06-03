@@ -1,0 +1,150 @@
+.amatic-sc-regular {
+  font-family: "Alegreya", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  background: linear-gradient(to right, #FDE0FF, #B4F3F4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.header-ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.card-img {
+  max-height: 50px;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 0;
+}
+
+.logo-li {
+  margin-right: 10px;
+}
+
+.title-li {
+  font-size: 1.5em;
+  margin-right: auto;
+}
+.add-review-section {
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 80vh; /* Делаем секцию меньше */
+  justify-content: center;
+  margin-top: 10vh;/* Добавляем отступ сверху, чтобы поднять секцию выше */
+}
+
+.add-review-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+#review-form {
+  width: 60%;
+  max-width: 1000px;
+  background-color: #F3F4F5;
+  padding-top: 10px;    /*отступ сверху*/
+  padding-bottom: 20px;  /* отступ снизу*/
+  padding-left: 30px;   /*отступ слева*/
+  padding-right: 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  box-sizing: border-box;
+}
+
+#review-form .form-group {
+  margin-bottom: 15px;
+  padding: auto;
+}
+
+#review-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#review-form input[type="text"],
+#review-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Стилизация для звездочек рейтинга */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  cursor: pointer;
+  font-size: 2em;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating label:hover {
+  color: #ffc107;
+}
+.form-actions{
+  text-align: center;
+}
+.submit-button {
+  background-image: linear-gradient(to right, #FDE0FF, #B4F3F4);
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+  display: inline-flex; /* выравнивание иконки */
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.submit-button:hover {
+background-image: linear-gradient(to left, #FDE0FF, #B4F3F4);
+transform: scale(1.1); /* Scale instead of rotate */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.form-actions{
+  text-align: right; /* Выравниваем контейнер кнопки слева */
+}
+.button-container{
+   display: flex;
+  justify-content: flex-end; /* Выравниваем кнопку справа в контейнере */
+}

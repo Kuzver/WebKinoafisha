@@ -1,0 +1,540 @@
+html, body {
+    margin: 0; /* Убираем отступы у html */
+    padding: 0; /* Убираем отступы у body */
+}
+.yanone-kaffeesatz-light {
+  font-family: "Yanone Kaffeesatz", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.amatic-sc-regular {
+  font-family: "Alegreya", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+  
+  header {
+    background: linear-gradient(to right, #FDE0FF, #B4F3F4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .header-nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    justify-content: space-around;
+    width: 90%;
+  }
+  
+  .card-img {
+    max-height: 50px;
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 0;
+  }
+  
+  .logo-li {
+    margin-right: 10px;
+  }
+  
+  .title-li {
+    font-size: 1.5em;
+    margin-right: auto;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 220px;
+    border-radius: 15px;
+  }
+  
+  #search-button {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #B4F3F4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  #search-button:hover {
+    background-color: #000000;
+    transform: scale(1.1); /* Scale instead of rotate */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .lupa {
+    max-height: 30px;
+    max-width: 30px;
+    background-color: transparent;
+  }
+  
+  .search-icon-li {
+    padding-left: 10px;
+  }
+  
+  #intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background: linear-gradient(to bottom, #FDE0FF, #B4F3F4);
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  }
+  
+  #intro h1 {
+    font-size: 4em;
+    max-width: 100%;
+  }
+  @media (max-width: 768px) {
+    #intro {
+        min-height: 50vh;  /* Уменьшаем минимальную высоту */
+    }
+
+    #intro h1 {
+        font-size: 2.5em; /* Уменьшаем размер шрифта для мобильных */
+    }
+}
+
+/* Медиазапрос для экранов от 768px до 992px (планшеты) */
+@media (min-width: 768px) and (max-width: 992px) {
+     #intro h1 {
+        font-size: 3em; /* Уменьшаем размер шрифта для планшетов */
+    }
+}
+  
+  #eyeliner {
+    position: relative;
+  }
+  
+  #eyeliner .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  #eyeliner .eyeliner-content {
+    position: relative;
+    margin: 30px;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center;    /* Центрируем по вертикали */
+    flex-direction: column;
+    }
+  
+  #eyeliner h2 {
+    display: block; /* Добавлено */
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    color: #000;
+    font-size: 1.5em;
+    white-space: pre-line;
+    background-color: #F3F4F5; /* Изменение здесь */
+    text-align: center;
+    padding: 30px;
+    margin: 50px 50px;
+    border: 2px solid transparent; /* Изменение здесь */
+    background-origin: border-box; /* Изменение здесь */
+    background-clip: padding-box, border-box; /* Изменение здесь */
+    display: inline-block;
+  }
+  .main {
+    background-image: linear-gradient(to right, #B4F3F4, #FDE0FF);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px; /* Added gap for spacing between divs */
+    padding: 20px; /* Added padding for the main container */  /* Added border */  /* Add rounded corners for the border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  }
+  
+  .main > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 20px;
+    background-color: #F3F4F5; /* Changed to white for better contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  
+  .main > div > div:first-child {
+    padding-right: 10px;
+    text-align: left;
+  }
+  
+  .main > div > div:last-child {
+    padding-left: 10px;
+    text-align: right;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-container {
+    max-width: 50%;
+    height: 100%;
+    display: block;
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+    animation: pulsate 4s ease-in-out infinite;
+}
+
+  .chess,
+  .tetris,
+  .game2048 {
+    background-color: white;
+    max-width: 50%;
+    height: 100%;
+    max-height: 100%;
+     object-fit: cover;
+    border: 25px solid white;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: pulsate 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .main h1 {
+    font-size: 2em;
+    margin-top: 0px;
+  }
+  
+  .main h2 {
+    font-size: 1.2em;
+    white-space: pre-line;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .main > div {
+      grid-template-columns: 1fr;
+    }
+    .main > div > div:first-child {
+      padding-right: 0;
+      text-align: center;
+    }
+    .main > div > div:last-child {
+      padding-left: 0;
+      text-align: center;
+    }
+  }
+
+#endline {
+    position: relative;
+    padding: 50px;
+  }
+  
+  #endline .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  #endline .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+    margin-left: 30px;  /* Отступ слева */
+    margin-right: 30px;
+   
+  }
+
+  .grid-item {
+    width: 80%;
+    height: 80%;
+    background-color: #F3F4F5;
+    border-radius: 50px;  /* Закругляем углы */
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Важно для абсолютного позиционирования *//* Скрывает содержимое, выходящее за пределы элемента */
+  }
+
+.grid-item::before {
+  content: "";
+  position: absolute;
+  top: -5px; /* Отступ сверху */
+  left: -5px; /* Отступ слева */
+  width: calc(100% + 10px); /* Ширина на 10px больше */
+  height: calc(100% + 10px);
+  background-image: linear-gradient(to right, #B4F3F4, #FDE0FF);
+  border-radius: 50px;
+  z-index: -1;  /* Фактически помещаем градиентный фон поверх элемента */
+  pointer-events: none; /*  Важно! Чтобы градиент не мешал кликам */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+  /* Стили для формы */
+  #endline fieldset {
+      border: none;
+      padding: 0;
+  }
+  
+  #endline legend {
+    font-size: 1.2em;
+    padding: 5px 0;
+  }
+  
+  .form-group {
+      margin-bottom: 10px;
+      display: flex; /* Чтобы label и input были на одной строке */
+      flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+      outline: none;
+  }
+  
+  
+  /* Стиль для кнопки */
+  .submit-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #B4F3F4, #FDE0FF);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #F3F4F5;
+    transform: scale(1.1); /* Scale instead of rotate */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button-text {
+    margin-right: 5px;
+      color: #000;
+  }
+  
+  .icon{
+      color: #000; /* иконка черная */
+  }
+  
+  
+  /* Стиль для кнопки Скачать игру*/
+  .my-button {
+      background-color: transparent;
+      background-image: linear-gradient(to right, #B4F3F4, #FDE0FF);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    color: #000;
+    border-radius: 20px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 10px;  
+    margin-top: 30px;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .my-button:hover {
+    background-color: #F3F4F5;
+    transform: scale(1.1); /* Scale instead of rotate */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  #endline h1 {
+    font-size: 1.5em;
+  }
+  
+  @media (max-width: 768px) {
+    #endline > .grid-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #help {
+    background: linear-gradient(to right, #FDE0FF, #B4F3F4);
+    padding: 30px;
+  }
+  a {
+  text-decoration: none;
+  color: black;
+}
+  #help nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #help ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  #help ul > li:first-child {
+      margin-right: 10px;  /* Оставляем отступ справа */
+  }
+  
+  #help ul > li:nth-child(2){
+      font-size: 1.5em;
+  }
+  
+  #help table {
+      width: 50%;
+      margin-left: auto; /* Сдвигаем таблицу вправо */
+      margin-right: 0; /* Убираем отступ справа */
+  }
+  #help {
+    background: linear-gradient(to right, #FDE0FF, #B4F3F4);
+    padding: 30px;
+  }
+  a {
+  text-decoration: none; /* Scale instead of rotate */
+  color: black;
+}
+  #help nav {
+      display: flex;
+    align-items: center;
+     justify-content: space-between;
+     width: 100%;
+  }
+ #help .help-left {
+  display: flex;
+ }
+   #help .help-right {
+     display: flex;
+     justify-content: flex-end;
+ }
+  
+  #help ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  #help ul > li:first-child {
+      margin-right: 10px;  /* Оставляем отступ справа */
+  }
+  
+  #help ul > li:nth-child(2){
+      font-size: 1.5em;
+  }
+    #help .table-container{
+        position: relative;
+  }
+  #help table {
+      width: 70%;
+       margin-right: 0; /* Убираем отступ справа */
+  }
+    #help th {
+        font-weight: bold;
+    }
+    
+    #help td {
+        font-weight: normal;
+    }
+    
+  
+  #help table, #help td, #help th {
+      text-align: left;
+      padding: 5px 20px;
+  }
+  
+  #help .card-img {
+    max-height: 50px;
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 0;
+  }
+    #help p {
+      position: relative;
+      padding-top: 10px;
+      text-align: center;
+  }
+ 
+  #help p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;  /* Change to left: 0; */
+    width: 100%; /* Make width 100% of the parent */
+    height: 2px;
+    background: black;
+  }
